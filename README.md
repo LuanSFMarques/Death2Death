@@ -66,6 +66,7 @@ Next, the amount of kills that each weapon requires for you to conquer it:
 5. 26 kills
 6. 31 kills
 
+
 # Monster names
 
 Here I will list all monsters and their names:
@@ -104,6 +105,53 @@ Cursed:
 -    23. "Hideous Skull"
 -    24. "Living Paintings"
 -    25. "Red Eye"
+
+# Bosses
+
+Now it's time to talk about the bosses! They are not that different from regular demons, except in the following ways...
+*Bosses contain much more health than normal monsters. This means you are unable to kill a boss without taking damage*
+
+*All 3 bosses (including Death) have a unique design in the battle view*
+
+*All bosses have weaknesses that aren't quite explicit by their names. You'll have to figure it out by trial and error or follow the next part in this topic.* 
+
+*After each boss defeated (the first two) there will be a new type of monster added and the health of all others will increase.*
+
+
+With all that in mind, let's get to the bosses themselves:
+
+- 1. "Garlihn', the Wandering Warrior", weak to FIRE
+
+- 2. "Buiyo', the Dark Giant" weak to ICE
+
+- 3. "Death" weak to CARNAL
+
+# Life
+
+Here's a short thread on HP mechanics (the character's health)
+
+There's not much to say... When health reaches zero, your character simply dies and the game ends with a dark animation :)
+
+
+# Best way to play!
+
+It will be about how you should play the game in order to have a fun little game!
+
+Here I will list certain steps:
+
+- 1. Always try hit crit damage to monsters by interpreting their name. The less damage you take in this game, the further you get! Trying to kill monsters by typing with normal damage will not get you to the end.
+
+- 2. Don't press space multiple times to skip a cutscene. Unfortunately I still haven't implemented a way to make the input command accumulate to the point of releasing them all at once, making the experience awkward. Always send the command at the correct time and just press "space" when the game tells you to
+
+- 3. Use your creative mind! Because it is an extremely simple game, it can seem tedious since it is quite dated in terms of visuals. The best way to taste it is to imagine things better with your mind, as if you were reading a book or playing traditional tabletop rpg.
+
+# quit
+
+If you want to leave the game, type "quit" and you will die automatically. Causing the game to play the final death cutscene and stop working afterwards.
+
+# Have Fun!
+
+
 
 
 

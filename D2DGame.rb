@@ -108,7 +108,7 @@
     boss = Array.new
     boss[1] = Boss.new("Garlihn, the Wandering Warrior", "fire", 30, 10)
     boss[2] = Boss.new("Buiyo, the Dark Giant", "ice", 40, 15)
-    boss[3] = Boss.new("Death", "carnal", 50, 25)
+    boss[3] = Boss.new("Death", "carnal", 60, 30)
 
 #--------------------------------------------------------------------------------------------------------------------( Game Menu )
     puts "\e[H\e[2J"
@@ -276,7 +276,6 @@
                 attack = gets.chomp().to_s.downcase
                 
                 if attack == "quit"
-                    death += 1
                     break
                 end
                 if attack == monster[rand_number].weak
@@ -292,7 +291,7 @@
                     life -= monster[rand_number].dmg
                 end
                 if life <= 0
-                    death += 1
+                    death = 1
                     break
                 end
             end     
@@ -343,7 +342,11 @@
                 puts("-----#---------------------------u----------88888888-----")
                 puts("----#-#-------------------------XXX----------88----88----")
                 puts("----#-#-----------------------------------##88####88##---")
-                attack = gets.chomp()
+                attack = gets.chomp().to_s.downcase
+                if attack == "quit"
+                    death = 1
+                    break
+                end
                 if attack == boss[dif].weak
                     BHP -= weapon[w_number].crit
                 elsif
@@ -565,7 +568,11 @@
                     puts("-----#------------------------------------ooo---ooo------")
                     puts("----#-#--------------------------------ooooo-----ooooo---")
                     puts("----#-#----------------------------####ooooo#####ooooo###")
-                    attack = gets.chomp()
+                    attack = gets.chomp().to_s.downcase
+                    if attack == "quit"
+                        death = 1
+                        break
+                    end
                     if attack == boss[dif].weak
                         BHP -= weapon[w_number].crit
                     elsif
@@ -664,8 +671,12 @@
                     end
                 end
 
-                if dif == 3
+                if dif == 1
                     rand_number = rand(10)
+                elsif dif == 2
+                    rand_number = rand(15)
+                elsif dif == 3
+                    rand_number = rand(25)
                 end
 
                 MHP = monster[rand_number].hp
@@ -771,7 +782,11 @@
                     puts("-----#-----------------------------####|###|####---------")
                     puts("----#-#----------------------------####|###|####---------")
                     puts("----#-#---------------------------####\{}###[}####--------")
-                    attack = gets.chomp()
+                    attack = gets.chomp().to_s.downcase
+                    if attack == "quit"
+                        death = 1
+                        break
+                    end
                     if attack == boss[dif].weak
                         BHP -= weapon[w_number].crit
                     elsif
