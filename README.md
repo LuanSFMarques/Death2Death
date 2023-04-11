@@ -66,7 +66,6 @@ Next, the amount of kills that each weapon requires for you to conquer it:
 5. 26 kills
 6. 31 kills
 
-
 # Monster names
 
 Here I will list all monsters and their names:
