@@ -121,11 +121,16 @@ Now it's time to talk about the bosses! They are not that different from regular
 With all that in mind, let's get to the bosses themselves:
 
 - 1. "Garlihn', the Wandering Warrior", weak to FIRE
+    *Hp = 30*
+    *Dmg = 10*
 
 - 2. "Buiyo', the Dark Giant" weak to ICE
-
+    *Hp = 40*
+    *Dmg = 15*
 - 3. "Death" weak to CARNAL
-
+    *Hp = 60*
+    *Dmg = 30*
+    
 # Life
 
 Here's a short thread on HP mechanics (the character's health)
