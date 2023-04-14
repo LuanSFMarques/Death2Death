@@ -1,6 +1,6 @@
 # Death2Death to VISUALG
 
-Hi user! This is a small guide to a game made entirely by me in a program called "Visualg". This is a Pseudocode of the Portuguese language, with scarce tools and used only for basic education. My intention with this project was to take my creativity and my ability in the program to a testing test!
+Hi user! This is a small guide to a game made entirely by me in a program called "Visualg". This is a Portuguese pseudocode, with scarce tools and used only for basic education. My intention with this project was to take my creativity and my ability to produce something minimally large with an extremely basic and "weird" tool!
 
 
 First, I ask you to read the game guide for Ruby, as that is a complete game guide. Here I will just list the version differences.
