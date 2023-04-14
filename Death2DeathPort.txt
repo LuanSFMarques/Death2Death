@@ -1,0 +1,2168 @@
+Algoritmo "Death2Death_Game"
+// Descrição   : Death2Death (Game)
+// Autor(a)    : Luan de Souza Ferreira Marques
+// Data atual  : 21/03/2023
+
+Var
+
+weak:caracter
+screen:inteiro
+teste:caracter
+Monster:vetor[0..24]de caracter
+Monstercount:inteiro
+bosscount:inteiro
+Boss:vetor[0..3]de caracter
+Bosshp:inteiro
+Weapon:vetor[0..7]de caracter
+Weaponuse:caracter
+weaponcount:inteiro
+spell:vetor[0..4]de caracter
+spellsc:caracter
+antkill:inteiro
+perfect:inteiro
+GP:inteiro
+fim:inteiro
+//monster HP
+hpm:inteiro
+diff1,diff2,diff3:inteiro
+Kills:inteiro
+//monster type
+MT:vetor[0..4]de caracter
+MTcount:inteiro
+//damage
+dmg:inteiro
+dmgc:inteiro
+beatthegame:inteiro
+
+//monster damage
+dmgm:inteiro
+//contador
+c:inteiro
+escolhaa:inteiro
+
+
+
+/////////////////////////////////////////////////////////////////////
+
+Inicio
+
+////////Diff////////
+
+
+////////Weapons////////
+
+
+   weapon[0]<-"Wood Staff"
+      //dmg: 5,  dmgc: 10
+   weapon[1]<-"Iron Staff"
+      //dmg: 6,  dmgc: 12
+   weapon[2]<-"Gold Staff"
+      //dmg: 8, dmgc: 15
+   weapon[3]<-"Stapphire Staff"
+      //dmg: 10, dmgc: 18
+   weapon[4]<-"Transcendental Glass Staff"
+      //dmg: 15, dmgc: 25
+   weapon[5]<-"Black Magic Icon"
+      //dmg: 25, dmgc: 35
+   weapon[6]<-"Blue Beast Crystal"
+      //dmg: 35, dmgc: 50
+   weapon[7]<-"Death's Eye"
+      //dmg: 50, dmgc: 50
+
+////////Spells////////
+
+   spell[0]<-"Fire"
+   spell[1]<-"Water"
+   spell[2]<-"Ice"
+   spell[3]<-"Poison"
+   spell[4]<-"Carnal"
+
+////////Monster Types////////
+
+   mt[0]<-"Ice"
+   mt[1]<-"Fire"
+   mt[2]<-"Water"
+   mt[3]<-"Carnal"
+   mt[4]<-"Cursed"
+
+
+
+////////Monsters////////
+
+
+   //Ice type (weak to fire)//
+   monster[0]<-"Frozen Golem"
+   monster[1]<-"Ice warrior"
+   monster[2]<-"Chilly Homunculus"
+   monster[3]<-"Cursed Snow Man"
+   monster[4]<-"Frigid Demon"
+   //Fire type (weak to water)//
+   monster[5]<-"Burnt King"
+   monster[6]<-"Lava Slime"
+   monster[7]<-"Blazing Creep"
+   monster[8]<-"Hell Servant"
+   monster[9]<-"Boiling Golem"
+   //Water type (weak to ice)//
+   monster[10]<-"Aquatic Being"
+   monster[11]<-"Kraken"
+   monster[12]<-"Blue Leviathan"
+   monster[13]<-"Brisk Breeze"
+   monster[14]<-"Sailor Zombie"
+   //Carnal type (weak to poison)//
+   monster[15]<-"Agile Corpses"
+   monster[16]<-"Worldly Lord"
+   monster[17]<-"Meat Body"
+   monster[18]<-"Bloody Sinner"
+   monster[19]<-"Greasy Mouse"
+   //Cursed type (weak to carnal)//
+   monster[20]<-"Apparition"
+   monster[21]<-"Black ghost"
+   monster[22]<-"Hideous Skull"
+   monster[23]<-"Living Paintings"
+   monster[24]<-"Red Eye"
+
+////////Bosses////////
+
+   //First Boss//
+   boss[0]<-"Garlihn, the Wandering Warrior"
+
+   //Second Boss//
+   boss[1]<-"Buiyo, the Dark Giant"
+
+   //third Boss//
+   boss[2]<-"Maphes, the Last Great Demon"
+
+   //Fourth Boss//
+   boss[3]<-"Death"
+
+
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+////////Initial Values////////
+   beatthegame<-0
+
+
+////////Menu////////
+   timer(100)
+   escreval("========-------------------------------========")
+   escreval("<=-_-_-_D  E  A  T  H  2  D  E  A  T  H_-_-_-=>")
+   escreval("========-------------------------------========")
+   timer(500)
+   escreval("..A game made by Luan Marques..")
+   timer(0)
+   escreval("")
+   escreval("")
+   escreval("")
+   timer(1000)
+   timer(0)
+   escreval("______________Do you want to play?______________")
+   escreval("_________________Type 1 for YES_________________")
+   escreval("_________________Type 2 for NO__________________")
+   escreva("Answer: ")
+   leia(escolhaa)
+
+   se escolhaa<=1 entao
+      limpatela
+      escreval("________Would you like to see the guide??_______")
+      escreval("_________________Type 1 for YES_________________")
+      escreval("_________________Type 2 for NO__________________")
+      escreva("Answer: ")
+      leia(escolhaa)
+
+      se escolhaa<=1 entao
+         limpatela
+         timer(100)
+         escreval("_____________________________________________")
+         escreval("___________Welcome to the guide______________")
+         escreval("____________________...______________________")
+         timer(1200)
+         timer(80)
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         timer(1000)
+         escreval("........Submit any number to continue........")
+         timer(0)
+         leia(escolhaa)
+
+         limpatela
+         timer(80)
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         escreval("_____________________________________________")
+         timer(1000)
+         escreval("......Submit any number to play the game.....")
+         timer(0)
+         leia(escolhaa)
+      fimse
+   /////////////////////////////////////////////////////////////////////
+
+   ////////Game////////
+         limpatela
+         timer(0)
+
+      ////////Health Bar////////
+         GP<-1000
+         hpm<-1
+      ////////Kills////////
+         kills<-0
+      ////////Monster and boss Count////////
+         monstercount<-0
+         bosscount<-0
+      ////////Weapon Equiped////////
+         weaponcount<-0
+
+      ////////LOOP////////////////LOOP////////////////LOOP////////
+   repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-8
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-10
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-14
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-18
+            dmgc<-30
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ate dmg>0
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=3 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"Carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-30
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+
+         fimse
+
+
+      //BATTLE//
+
+      screen<-4
+         enquanto screen>0 faca
+               limpatela
+               escreval("-------------------===================-------------------")
+               escreval("-------------------Step 1 to the Death-------------------")
+               escreval("-------------------===================-------------------")
+               timer(500)
+               timer(0)
+               limpatela
+               escreval("-------------------XXXXXXXXXXXXXXXXXXX-------------------")
+               escreval("------------------=Step 1 to the Death=------------------")
+               escreval("-------------------XXXXXXXXXXXXXXXXXXX-------------------")
+               timer(500)
+               timer(0)
+               screen<-screen-1
+         fimenquanto
+
+   repita
+      repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=1 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14
+            hpm<-12
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19
+            hpm<-15
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24
+            hpm<-15
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-30
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+
+         fimse
+
+
+
+         repita
+            se kills=7 entao
+               se weaponcount=0 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=10 entao
+               se weaponcount=1 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=16 entao
+               se weaponcount=2 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=21 entao
+               se weaponcount=3 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=26 entao
+               se weaponcount=4 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=31 entao
+               se weaponcount=5 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=36 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=40 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            limpatela
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("-----------------------------Monster Name: ",monster[c])
+            escreval("-----------------------------Monster Type: ",mt[mtcount])
+            escreval("-----------------------------Monster HP: ",hpm)
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("----###--------------------------------------------------")
+            escreval("----###--------------------------------------------------")
+            escreval("-----#---------------------------------------------------")
+            escreval("---#####--------------------------------------####-------")
+            escreval("-----#---------------------------------------#----#------")
+            escreval("-----#---------------------------------------#-##-#------")
+            escreval("----#-#--------------------------------------#----#------")
+            escreval("----#-#---------------------------------------####-------")
+            leia(spellsc)
+
+            se spellsc=weak entao
+               hpm<-hpm-dmgc
+            senao
+               hpm<-hpm-dmg
+            fimse
+            se hpm>0 entao
+               GP<-GP-dmgm
+               perfect<-perfect+1
+            fimse
+         ate hpm<=0
+            kills<-kills+1
+               GP<-GP+1
+            limpatela
+   ate kills=10
+
+///////////////////////////////////////////////////////////////////////////
+   bosscount<-bosscount+1
+
+   repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ate dmg>0
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=3 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-30
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+
+         fimse
+
+
+      //BATTLE//
+
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=1 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-34
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+         fimse
+            limpatela
+            timer(500)
+            escreval("------------------------------------------------------------")
+            escreval("Danger...Danger...Danger...Danger...Danger...Danger...Danger")
+            escreval("Danger...Danger...Danger...Danger...Danger...Danger...Danger")
+            escreval("Danger...Danger...Danger...Danger...Danger...Danger...Danger")
+            timer(0)
+            escreval("------------------------------------------------------------")
+            timer(1000)
+            escreval("'Garlihn, the Wandering Warrior' is waiting for you.........")
+            timer(0)
+            escreval("________________Type any number to continue_________________")
+            leia(escolhaa)
+            limpatela
+         repita
+            dmgm<-16
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("-------------------------- Garlihn, the Wandering Warrior")
+            escreval("---------------------------------------------------------")
+            escreval("-----------------------------Boss HP: ",bosshp)
+            escreval("----------------------------------------------8888-------")
+            escreval("----------------------------------------------8888-------")
+            escreval("----###----------------------------------------88--------")
+            escreval("----###--------------------------------~==888888888888---")
+            escreval("-----#-------------------------------uu-------8888-------")
+            escreval("---#####---------------------------uu---------8888-------")
+            escreval("-----#----------------------------u---------888888-------")
+            escreval("-----#---------------------------u----------88888888-----")
+            escreval("----#-#-------------------------XXX----------88----88----")
+            escreval("----#-#-----------------------------------##88####88##---")
+            timer(1400)
+            timer(0)
+            bosshp<-bosshp-dmg
+            se bosshp>0 entao
+               GP<-GP-dmgm
+            fimse
+            limpatela
+      ate bosshp<=0
+
+
+
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("----------------Boss Name: Garlihn, the Wandering Warrior")
+            escreval("---------------------------------------------------------")
+            escreval("-----------------------------Boss HP: 0")
+            escreval("----------------------------------------------#8K8-------")
+            escreval("----------------------------------------------K888-------")
+            escreval("----###----------------------------------------K8--------")
+            escreval("----###----------------------------------K888K8##8KK88---")
+            escreval("-----#----------------------------------------8888-------")
+            escreval("---#####--------------------------------------8#8K-------")
+            escreval("-----#---------------------------------------#8888#------")
+            escreval("-----#--------------------------------------8#8K888#-----")
+            escreval("----#-#--------------------------------------K8----88----")
+            escreval("----#-#-----------------------------------##88####88##---")
+
+   timer(1200)
+   timer(0)
+   limpatela
+   escreval("_____Garlihn, the Wandering Warrior has been defeated...____")
+   escreval("____________________________________________________________")
+   escreval("_______________You now have a new spell: ice________________")
+   escreval("____________________________________________________________")
+   escreval("__________a new type of monster chases you: WATER___________")
+   escreval("____________________________________________________________")
+   escreval("____________________________________________________________")
+   escreval("____________________________________________________________")
+   escreval("________________Type any number to continue_________________")
+   escreval("____________________________________________________________")
+   leia(escolhaa)
+
+         screen<-4
+         enquanto screen>0 faca
+               limpatela
+               escreval("-------------------===================-------------------")
+               escreval("-------------------Step 2 to the Death-------------------")
+               escreval("-------------------===================-------------------")
+               timer(500)
+               timer(0)
+               limpatela
+               escreval("-------------------XXXXXXXXXXXXXXXXXXX-------------------")
+               escreval("------------------=Step 2 to the Death=------------------")
+               escreval("-------------------XXXXXXXXXXXXXXXXXXX-------------------")
+               timer(500)
+               timer(0)
+               screen<-screen-1
+         fimenquanto
+
+   repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=1 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-12
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-12
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-12
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-12
+            dmgm<-15
+            mtcount<-4
+            weak<-"Carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-34
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+         fimse
+
+
+         repita
+            se kills=7 entao
+               se weaponcount=0 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=10 entao
+               se weaponcount=1 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=16 entao
+               se weaponcount=2 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=21 entao
+               se weaponcount=3 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=26 entao
+               se weaponcount=4 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=31 entao
+               se weaponcount=5 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=36 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=40 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+
+            se kills=7 entao
+               se weaponcount=0 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=10 entao
+               se weaponcount=1 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=16 entao
+               se weaponcount=2 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=21 entao
+               se weaponcount=3 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=26 entao
+               se weaponcount=4 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=31 entao
+               se weaponcount=5 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=36 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=40 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+
+            limpatela
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("-----------------------------Monster Name: ",monster[c])
+            escreval("-----------------------------Monster Type: ",mt[mtcount])
+            escreval("-----------------------------Monster HP: ",hpm)
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("----###--------------------------------------------------")
+            escreval("----###--------------------------------------------------")
+            escreval("-----#---------------------------------------------------")
+            escreval("---#####--------------------------------------####-------")
+            escreval("-----#---------------------------------------#----#------")
+            escreval("-----#---------------------------------------#-##-#------")
+            escreval("----#-#--------------------------------------#----#------")
+            escreval("----#-#---------------------------------------####-------")
+            leia(spellsc)
+
+
+            se spellsc=weak entao
+               hpm<-hpm-dmgc
+            senao
+               hpm<-hpm-dmg
+            fimse
+            se hpm>0 entao
+               GP<-GP-dmgm
+               perfect<-perfect+1
+            fimse
+         ate hpm<=0
+            kills<-kills+1
+               GP<-GP+1
+            limpatela
+   ate kills=25
+
+   bosscount<-bosscount+1
+
+   repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ate dmg>0
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=3 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-30
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+
+         fimse
+
+
+      //BATTLE//
+
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=1 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-34
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+         fimse
+            limpatela
+            timer(500)
+            escreval("------------------------------------------------------------")
+            escreval("Danger...Danger...Danger...Danger...Danger...Danger...Danger")
+            escreval("Danger...Danger...Danger...Danger...Danger...Danger...Danger")
+            escreval("Danger...Danger...Danger...Danger...Danger...Danger...Danger")
+            timer(0)
+            escreval("------------------------------------------------------------")
+            timer(1000)
+            escreval("'Buiyo, the Dark Giant' is waiting for you..................")
+            timer(0)
+            escreval("________________Type any number to continue_________________")
+            leia(escolhaa)
+            limpatela
+         repita
+            dmgm<-20
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("---------------------------Buiyo, the Dark Giant")
+            escreval("-----------------------------Boss HP: ",bosshp)
+            escreval("-------------------------------------oo---ooooooooo---oo-")
+            escreval("----###------------------------------oo---ooooooooo---oo-")
+            escreval("----###-----------------------------oooo--ooo---ooo--oooo")
+            escreval("-----#------------------------------8888--ooo---ooo--8888")
+            escreval("---#####----------------------------------ooo---ooo------")
+            escreval("-----#------------------------------------ooo---ooo------")
+            escreval("-----#------------------------------------ooo---ooo------")
+            escreval("----#-#--------------------------------ooooo-----ooooo---")
+            escreval("----#-#----------------------------####ooooo#####ooooo###")
+            timer(1400)
+            timer(0)
+            bosshp<-bosshp-dmg
+            se bosshp>0 entao
+               GP<-GP-dmgm
+            fimse
+            limpatela
+      ate bosshp<=0
+
+
+
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("---------------------------Buiyo, the Dark Giant")
+            escreval("-----------------------------Boss HP: 0")
+            escreval("-------------------------------------oo------oooooo---o--")
+            escreval("----###-------------------------------o---ooooo--oo---oo-")
+            escreval("----###-----------------------------oooo--ooo---ooo----oo")
+            escreval("-----#------------------------------88----o-----ooo--8-88")
+            escreval("---#####----------------------------------ooo---o--------")
+            escreval("-----#------------------------------------o-----ooo------")
+            escreval("-----#-------------------------------------oo---ooo------")
+            escreval("----#-#--------------------------------ooooo-----o---o---")
+            escreval("----#-#----------------------------####o###o#####ooooo###")
+
+   timer(2200)
+   timer(0)
+   limpatela
+   escreval("_____Garlihn, the Wandering Warrior has been defeated...____")
+   escreval("____________________________________________________________")
+   escreval("_________You now have a new spell: poison and carnal________")
+   escreval("____________________________________________________________")
+   escreval("____2 new types of monster chases you: CARNAL and CURSED____")
+   escreval("____________________________________________________________")
+   escreval("____________________________________________________________")
+   escreval("____________________________________________________________")
+   escreval("________________Type any number to continue_________________")
+   escreval("____________________________________________________________")
+   leia(escolhaa)
+
+         screen<-4
+         enquanto screen>0 faca
+               limpatela
+               escreval("-------------------===================-------------------")
+               escreval("-----------------Final step to the Death-----------------")
+               escreval("-------------------===================-------------------")
+               timer(500)
+               timer(0)
+               limpatela
+               escreval("-------------------XXXXXXXXXXXXXXXXXXX-------------------")
+               escreval("----------------=Final step to the Death=----------------")
+               escreval("-------------------XXXXXXXXXXXXXXXXXXX-------------------")
+               timer(500)
+               timer(0)
+               screen<-screen-1
+         fimenquanto
+
+   repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-20
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-25
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=1 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-15
+            Dmgm<-15
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-15
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-25
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-25
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-25
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-34
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+         fimse
+
+
+         repita
+            se kills=7 entao
+               se weaponcount=0 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=10 entao
+               se weaponcount=1 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=16 entao
+               se weaponcount=2 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=21 entao
+               se weaponcount=3 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=26 entao
+               se weaponcount=4 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=36 entao
+               se weaponcount=5 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=38 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            se kills=40 entao
+               se weaponcount=6 entao
+               weaponcount<-weaponcount+1
+               fimse
+            fimse
+            limpatela
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("--Kills: ",kills)
+            escreval("-----------------------------Monster Name: ",monster[c])
+            escreval("-----------------------------Monster Type: ",mt[mtcount])
+            escreval("-----------------------------Monster HP: ",hpm)
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("----###--------------------------------------------------")
+            escreval("----###--------------------------------------------------")
+            escreval("-----#---------------------------------------------------")
+            escreval("---#####--------------------------------------####-------")
+            escreval("-----#---------------------------------------#----#------")
+            escreval("-----#---------------------------------------#-##-#------")
+            escreval("----#-#--------------------------------------#----#------")
+            escreval("----#-#---------------------------------------####-------")
+            leia(spellsc)
+
+
+            se spellsc=weak entao
+               hpm<-hpm-dmgc
+            senao
+               hpm<-hpm-dmg
+            fimse
+            se hpm>0 entao
+               GP<-GP-dmgm
+               perfect<-perfect+1
+            fimse
+         ate hpm<=0
+            kills<-kills+1
+               GP<-GP+4
+            limpatela
+   ate kills=40
+
+   bosscount<-bosscount+1
+
+   repita
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ate dmg>0
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=3 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-30
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-50
+
+         fimse
+
+
+      //BATTLE//
+
+         weaponuse<-weapon[weaponcount]
+      ////////Damage////////
+         se weaponuse="Wood Staff" entao
+            dmg<-5
+            dmgc<-10
+         fimse
+         se weaponuse="Iron Staff" entao
+            dmg<-6
+            dmgc<-12
+         fimse
+         se weaponuse="Gold Staff" entao
+            dmg<-8
+            dmgc<-15
+         fimse
+         se weaponuse="Stapphire Staff" entao
+            dmg<-10
+            dmgc<-18
+         fimse
+         se weaponuse="Transcendental Glass Staff" entao
+            dmg<-15
+            dmgc<-25
+         fimse
+         se weaponuse="Black Magic Icon" entao
+            dmg<-25
+            dmgc<-35
+         fimse
+         se weaponuse="Blue Beast Crystal" entao
+            dmg<-35
+            dmgc<-45
+         fimse
+         se weaponuse="Death's Eye" entao
+            dmg<-50
+            dmgc<-50
+         fimse
+      ////////Phase Enemies////////
+            se bosscount=0 entao
+               aleatorio 0, 9
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=1 entao
+               aleatorio 0, 14
+               leia(c)
+               aleatorio off
+            fimse
+            se bosscount=2 entao
+               aleatorio 0, 24
+               leia(c)
+               aleatorio off
+            fimse
+
+      ////////Enemies HP,dmg and type////////
+         se c<=4 entao
+            hpm<-10
+            Dmgm<-10
+            mtcount<-0
+            weak<-"fire"
+         fimse
+         se c>4 entao
+            se c<=9 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-1
+            weak<-"water"
+            fimse
+         fimse
+         se c>9 entao
+            se c<=14 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-2
+            weak<-"ice"
+            fimse
+         fimse
+         se c>14 entao
+            se c<=19 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-3
+            weak<-"poison"
+            fimse
+         fimse
+         se c>19 entao
+            se c<=24 entao
+            hpm<-10
+            dmgm<-15
+            mtcount<-4
+            weak<-"carnal"
+            fimse
+         fimse
+         se bosscount=1 entao
+            bosshp<-34
+
+         fimse
+         se bosscount=2 entao
+            bosshp<-40
+
+         fimse
+         se bosscount=3 entao
+            bosshp<-200
+         fimse
+            limpatela
+            timer(500)
+            escreval("------------------------------------------------------------")
+            escreval("Danger.*.Danger.*.Danger.*.Danger.*.Danger.*.Danger.*.Danger")
+            escreval("Danger.*.Danger.*.Danger.*.Danger.*.Danger.*.Danger.*.Danger")
+            escreval("Danger.*.Danger.*.Danger.*.Danger.*.Danger.*.Danger.*.Danger")
+            timer(0)
+            escreval("------------------------------------------------------------")
+            timer(1000)
+            escreval("'DEATH' is waiting for you..................................")
+            timer(0)
+            escreval("________________Type any number to continue_________________")
+            leia(escolhaa)
+            limpatela
+         repita
+            dmgm<-23
+            escreval("--Glory Points:",GP)
+            escreval("--Weapon: ",weaponuse)
+            escreval("--Dmg and DmgCrit: ",dmg,dmgc)
+            escreval("-----------------------------DEATH")
+            escreval("-----------------------------Boss HP: ",bosshp)
+            escreval("---------------------------------------------------------")
+            escreval("-------------------------------SSSSSSSS-|||--------------")
+            escreval("----###----------------------SS---II----#|#--------------")
+            escreval("----###----------------------S----I|||||||||||-----------")
+            escreval("-----#-----------------------------I--###|###-|----------")
+            escreval("---#####---------------------------I-####|####|----------")
+            escreval("-----#-----------------------------I-##|||||##-----------")
+            escreval("-----#-----------------------------####|###|####---------")
+            escreval("----#-#----------------------------####|###|####---------")
+            escreval("----#-#---------------------------####{}###[}####--------")
+            timer(1600)
+            timer(0)
+            bosshp<-bosshp-dmg
+            se bosshp>0 entao
+               GP<-GP-dmgm
+            fimse
+            limpatela
+      ate bosshp<=0
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------SSSSSSSS-|||------------------------------")
+            escreval("-------------SS---II----#|#------------------------------")
+            escreval("-------------S----I|||||||||||||-------------------------")
+            escreval("-------------------I--###|###----------------------------")
+            escreval("-------------------I-####|####---------------------------")
+            escreval("-------------------I-##|||||##---------------------------")
+            escreval("-------------------####|###|####-------------------------")
+            escreval("-------------------####|###|####-------------------------")
+            escreval("------------------####{}###[}####------------------------")
+            
+            timer(1000)
+            timer(0)
+            limpatela
+            
+            
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------SSSSSSSS-|||------------------------------")
+            escreval("-------------SS---II----#|#------------------------------")
+            escreval("-------------S----I|||||||||||||-------------------------")
+            escreval("-------------------I--###|###----------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------------I-##|||||##---------------------------")
+            escreval("-------------------####|###|####-------------------------")
+            escreval("-------------------####|###|####-------------------------")
+            escreval("------------------####{}###[}####------------------------")
+            
+            timer(1000)
+            timer(0)
+            limpatela
+
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------SSSSSSSS-|||------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------S----I|||||||||||||-------------------------")
+            escreval("-------------------I--###|###----------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------------I-##|||||##---------------------------")
+            escreval("-------------------####|###|####-------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("------------------####{}###[}####------------------------")
+            
+            timer(1000)
+            timer(0)
+            limpatela
+
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------SSSSSSSS-|||------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------------I--###|###----------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------------I-##|||||##---------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("------------------####{}###[}####------------------------")
+            
+            
+            timer(1000)
+            timer(0)
+            limpatela
+
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------SSSSSSSS-|||------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------------I-##|||||##---------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            
+            timer(1000)
+            timer(0)
+            limpatela
+
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            
+            
+            timer(1000)
+            timer(0)
+            limpatela
+
+            timer(250)
+            escreval("--------------------D  E  A  T  H  2  D  E  A  T  H------")
+            escreval("-------------------D  E  A  T  H  2  D  E  A  T  H-------")
+            escreval("------------------D  E  A  T  H  2  D  E  A  T  H--------")
+            escreval("-----------------D  E  A  T  H  2  D  E  A  T  H---------")
+            escreval("----------------D  E  A  T  H  2  D  E  A  T  H----------")
+            escreval("---------------D  E  A  T  H  2  D  E  A  T  H-----------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("----------D  E  A  T  H  2  D  E  A  T  H----------------")
+            escreval("---------D  E  A  T  H  2  D  E  A  T  H-----------------")
+            escreval("--------D  E  A  T  H  2  D  E  A  T  H------------------")
+            escreval("-------D  E  A  T  H  2  D  E  A  T  H-------------------")
+            escreval("------D  E  A  T  H  2  D  E  A  T  H--------------------")
+            escreval("-----D  E  A  T  H  2  D  E  A  T  H---------------------")
+
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("-------------------D  E  A  T  H  2  D  E  A  T  H-------")
+            escreval("------------------D  E  A  T  H  2  D  E  A  T  H--------")
+            escreval("-----------------D  E  A  T  H  2  D  E  A  T  H---------")
+            escreval("----------------D  E  A  T  H  2  D  E  A  T  H----------")
+            escreval("---------------D  E  A  T  H  2  D  E  A  T  H-----------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("----------D  E  A  T  H  2  D  E  A  T  H----------------")
+            escreval("---------D  E  A  T  H  2  D  E  A  T  H-----------------")
+            escreval("--------D  E  A  T  H  2  D  E  A  T  H------------------")
+            escreval("-------D  E  A  T  H  2  D  E  A  T  H-------------------")
+            escreval("------D  E  A  T  H  2  D  E  A  T  H--------------------")
+            escreval("---------------------------------------------------------")
+            
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("------------------D  E  A  T  H  2  D  E  A  T  H--------")
+            escreval("-----------------D  E  A  T  H  2  D  E  A  T  H---------")
+            escreval("----------------D  E  A  T  H  2  D  E  A  T  H----------")
+            escreval("---------------D  E  A  T  H  2  D  E  A  T  H-----------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("----------D  E  A  T  H  2  D  E  A  T  H----------------")
+            escreval("---------D  E  A  T  H  2  D  E  A  T  H-----------------")
+            escreval("--------D  E  A  T  H  2  D  E  A  T  H------------------")
+            escreval("-------D  E  A  T  H  2  D  E  A  T  H-------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-----------------D  E  A  T  H  2  D  E  A  T  H---------")
+            escreval("----------------D  E  A  T  H  2  D  E  A  T  H----------")
+            escreval("---------------D  E  A  T  H  2  D  E  A  T  H-----------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("----------D  E  A  T  H  2  D  E  A  T  H----------------")
+            escreval("---------D  E  A  T  H  2  D  E  A  T  H-----------------")
+            escreval("--------D  E  A  T  H  2  D  E  A  T  H------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("----------------D  E  A  T  H  2  D  E  A  T  H----------")
+            escreval("---------------D  E  A  T  H  2  D  E  A  T  H-----------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("----------D  E  A  T  H  2  D  E  A  T  H----------------")
+            escreval("---------D  E  A  T  H  2  D  E  A  T  H-----------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------D  E  A  T  H  2  D  E  A  T  H-----------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("----------D  E  A  T  H  2  D  E  A  T  H----------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("--------------D  E  A  T  H  2  D  E  A  T  H------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("-----------D  E  A  T  H  2  D  E  A  T  H---------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("-------------D  E  A  T  H  2  D  E  A  T  H-------------")
+            escreval("------------D  E  A  T  H  2  D  E  A  T  H--------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            
+            timer(250)
+            timer(0)
+            limpatela
+
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            escreval("---------------------------------------------------------")
+            
+            timer(1000)
+            timer(0)
+            limpatela
+            
+            se perfect=0 entao
+               gp<-gp+1000
+            fimse
+            
+            
+            escreval("---------------------------------------------------------")
+            escreval("...Thanks for playing...")
+            escreval("Score: ",GP," Glory Points.")
+            se perfect=0 entao
+               escreval("*1000 Extra points for PERFECT*")
+               gp<-gp+1000
+               escreval("Score: ",GP," Glory Points.")
+            fimse
+            escreval("______________Type any number to continue________________")
+            leia(escolhaa)
+   ////////End////////
+   senao
+      limpatela
+      timer(70)
+      escreval("_________________________________________________")
+      escreval("_________________________________________________")
+      escreval("_________________________________________________")
+      escreval("______________YOU KNEELED TO DEATH_______________")
+      escreval("____-------------_______________-------------____")
+      escreval("_________________________________________________")
+      escreval("____###___#__###________________###___#__###_____")
+      escreval("____#__#__#__#__#_______________#__#__#__#__#____")
+      escreval("____#_#___#__###________________#_#___#__###_____")
+      escreval("____#__#__#__#__________________#__#__#__#_______")
+      escreval("_________________________________________________")
+      escreval("____-------------_______________-------------____")
+      escreval("______________YOU KNEELED TO DEATH_______________")
+      escreval("_________________________________________________")
+      escreval("_________________________________________________")
+      escreval("____________________ The END_____________________")
+   fimse
+Fimalgoritmo
+
