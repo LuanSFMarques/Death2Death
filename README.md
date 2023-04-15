@@ -155,11 +155,3 @@ Here I will list certain steps:
 If you want to leave the game, type "quit" and you will die automatically. Causing the game to play the final death cutscene and stop working afterwards.
 
 # Have Fun!
-
-
-
-
-
-
-
-
