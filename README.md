@@ -77,28 +77,24 @@ Ice:
 -    3. "Chilly Homunculus"
 -    4. "Cursed Snow Man"
 -    5. "Frigid Demon"
-
 Fire:
 -    6. "Burnt King"
 -    7. "Lava Slime"
 -    8. "Blazing Creep"
 -    9. "Hell Servant"
 -    10. "Boiling Golem"
-
 Water:
 -    11. "Aquatic Being"
 -    12. "Kraken"
 -    13. "Blue Leviathan"
 -    14. "Brisk Breeze"
 -    15. "Sailor Zombie"
-
 Carnal:    
 -    16. "Agile Corpses"
 -    17. "Worldly Lord"
 -    18. "Meat Body"
 -    19. "Bloody Sinner"
 -    20. "Greasy Mouse"
-
 Cursed:
 -    21. "Apparition"
 -    22. "Black ghost"
